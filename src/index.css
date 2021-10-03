@@ -1,0 +1,135 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+:root {
+  --sidebar-width: 72px;
+}
+
+.width-calculer {
+  width: calc(100% - var(--sidebar-width));
+}
+
+.modal-shadow {
+  box-shadow: 0px 0px 15px 1px rgba(229, 229, 229, 0.6);
+}
+
+input + label {
+  opacity: 1;
+  transition: all 0.3s ease-out;
+  transform: translateY(-140%);
+}
+
+input:placeholder-shown + label {
+  opacity: 0;
+  transform: translateY(0);
+}
+
+.radio-item:not(:last-of-type) {
+  margin-bottom: 0.8rem;
+}
+
+.radio-label {
+  display: flex;
+  align-items: center;
+  font-size: 1.05rem;
+  cursor: pointer;
+  position: relative;
+  color: #193412;
+  padding-left: 1.4rem;
+}
+
+.radio-label span {
+  margin: auto 0;
+  cursor: pointer;
+  display: block;
+  height: 1rem;
+  width: 1rem;
+  border: 3px solid #34d399;
+  border-radius: 50%;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.radio-label span::after {
+  content: '';
+  height: 0.4rem;
+  width: 0.4rem;
+  display: block;
+  border-radius: 50%;
+  background-color: #34d399;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+input[type='radio']:checked ~ .radio-label span::after {
+  opacity: 1;
+}
+
+textarea {
+  resize: none;
+}
+
+textarea + label {
+  opacity: 1;
+  transform: translateY(-440%);
+  transition: all 0.3s ease-out;
+}
+
+textarea:placeholder-shown + label {
+  opacity: 0;
+  transform: translateY(-300%);
+}
+
+/* MASONRY GRID SYSTEM */
+
+.my-masonry-grid {
+  display: -webkit-box; /* Not needed if autoprefixing */
+  display: -ms-flexbox; /* Not needed if autoprefixing */
+  display: flex;
+  width: auto;
+}
+.my-masonry-grid_column {
+  padding-left: 30px; /* gutter size */
+  background-clip: padding-box;
+}
+
+/* Style your items */
+.my-masonry-grid_column > div {
+  /* change div to reference your elements you put in <Masonry> */
+  background: grey;
+  margin-bottom: 30px;
+}
+
+@media (max-width: 570px) {
+  .my-masonry-grid_column {
+    padding-left: 0;
+  }
+
+  .my-masonry-grid_column li {
+    margin-right: auto;
+    margin-left: auto;
+    /* border-left: none;
+    border-right: none; */
+  }
+
+  .my-masonry-grid {
+    align-items: center;
+    justify-content: center !important;
+  }
+}
+
+@media (max-width: 400px) {
+  .my-masonry-grid_column li {
+    border-left: none;
+    border-right: none;
+  }
+}
